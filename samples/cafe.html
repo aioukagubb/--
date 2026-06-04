@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LP・Web制作ポートフォリオ</title>
+  <title>カフェ・店舗HP サンプル</title>
   <style>
 :root {
   --ink: #182126;
@@ -350,109 +350,77 @@ a {
 
   </style>
   <style>
-    .hero { --hero-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=82"); }
+    .hero { --hero-image: url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1800&q=82"); }
+    .button { background: var(--gold); }
   </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="nav">
-      <div class="brand">LP / Web Production</div>
-      <div class="nav-links">
-        <a href="#works">制作サンプル</a>
-        <a href="#service">対応範囲</a>
-        <a href="#flow">進め方</a>
-      </div>
+      <a class="brand" href="https://htmlpreview.github.io/?https://github.com/aioukagubb/--/blob/main/index.html">Portfolio</a>
+      <div class="nav-links"><a href="#menu">メニュー</a><a href="#space">空間</a><a href="#access">アクセス</a></div>
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero sample-hero">
     <div class="hero-inner">
-      <p class="eyebrow">自主制作ポートフォリオ</p>
-      <h1>目的と導線を整理するLP・Web制作</h1>
-      <p class="hero-copy">ランディングページ、店舗サイト、コーポレートサイトの構成整理から実装まで。スマホで見やすく、問い合わせにつながるページ作りを意識しています。</p>
-      <div class="actions">
-        <a class="button" href="#works">制作サンプルを見る</a>
-        <a class="button secondary" href="#flow">制作の進め方</a>
-      </div>
+      <p class="eyebrow">Cafe Site Sample</p>
+      <h1>静かな朝に、香りのいい一杯を。</h1>
+      <p class="hero-copy">焼きたてのトーストと自家焙煎コーヒー。日常の中で少しだけ深呼吸できるカフェです。</p>
+      <div class="actions"><a class="button" href="#menu">メニューを見る</a><a class="button secondary" href="#access">アクセス</a></div>
     </div>
   </section>
 
   <main>
-    <section id="works" class="section">
+    <section id="menu" class="section">
       <div class="wrap">
         <div class="section-head">
-          <h2>制作サンプル</h2>
-          <p>実案件ではなく自主制作の参考ページです。案件内容に近いサンプルを確認いただけるよう、業種別に用意しています。</p>
+          <h2>Menu</h2>
+          <p>写真と短い説明で、お店の魅力が伝わるように整理しています。スマホからでもメニューと営業時間がすぐ分かる構成です。</p>
         </div>
         <div class="grid">
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=82" alt="住宅リフォームの室内写真">
-            <div class="card-body">
-              <h3>リフォーム会社LP</h3>
-              <p>地域密着、施工実績、問い合わせ導線を意識したLPサンプルです。</p>
-              <a class="button" href="https://htmlpreview.github.io/?https://github.com/aioukagubb/--/blob/main/samples/reform.html">見る</a>
-              <div class="meta"><span class="tag">LP</span><span class="tag">住宅</span><span class="tag">問い合わせ導線</span></div>
-            </div>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=82" alt="カフェの店内写真">
-            <div class="card-body">
-              <h3>カフェ・店舗HP</h3>
-              <p>店舗の雰囲気、メニュー、アクセスを分かりやすく伝えるサイトサンプルです。</p>
-              <a class="button" href="https://htmlpreview.github.io/?https://github.com/aioukagubb/--/blob/main/samples/cafe.html">見る</a>
-              <div class="meta"><span class="tag">店舗</span><span class="tag">スマホ対応</span><span class="tag">写真訴求</span></div>
-            </div>
-          </article>
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=82" alt="美容サロンの施術イメージ">
-            <div class="card-body">
-              <h3>美容・女性向けLP</h3>
-              <p>清潔感、悩み訴求、予約導線を意識したLPサンプルです。</p>
-              <a class="button" href="https://htmlpreview.github.io/?https://github.com/aioukagubb/--/blob/main/samples/beauty.html">見る</a>
-              <div class="meta"><span class="tag">美容</span><span class="tag">LP</span><span class="tag">予約導線</span></div>
-            </div>
-          </article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=82" alt="コーヒー"><div class="card-body"><h3>House Blend</h3><p>香ばしさと甘さのバランスが良い定番ブレンド。</p></div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=1000&q=82" alt="トースト"><div class="card-body"><h3>Morning Toast</h3><p>厚切りトーストと季節のジャムを添えて。</p></div></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=82" alt="ケーキ"><div class="card-body"><h3>Daily Sweets</h3><p>コーヒーに合う日替わり焼き菓子。</p></div></article>
         </div>
       </div>
     </section>
 
-    <section id="service" class="section alt">
+    <section id="space" class="section alt">
       <div class="wrap split">
         <div>
-          <h2>対応できること</h2>
-          <p>目的、ターゲット、CTAを確認しながら、ページ構成と実装を進めます。原稿やデザインがある場合は、それをもとにスピード重視で制作できます。</p>
+          <h2>過ごしやすい空間</h2>
+          <p>来店前に雰囲気が伝わるよう、写真を大きく使い、予約やSNSへの導線を分かりやすく置く設計です。</p>
           <ul class="list">
-            <li>LP制作、ホームページ制作</li>
-            <li>HTML/CSSコーディング、レスポンシブ対応</li>
-            <li>WordPressページ制作、既存ページ修正</li>
-            <li>原稿、構成、CTA導線の整理</li>
+            <li>一人でも入りやすいカウンター席</li>
+            <li>ベビーカーでも入りやすい広めの通路</li>
+            <li>SNSで新メニューを発信</li>
           </ul>
         </div>
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=82" alt="ノートPCで制作作業をする様子">
+        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=82" alt="カフェの客席">
       </div>
     </section>
 
-    <section id="flow" class="section">
+    <section id="access" class="section">
       <div class="wrap">
         <div class="section-head">
-          <h2>制作の進め方</h2>
-          <p>認識違いを防ぐため、制作前に目的、素材、納品形式を確認します。未確定部分がある場合も、確認事項を整理しながら進行できます。</p>
+          <h2>Access</h2>
+          <p>営業時間、住所、SNSリンクを迷わず確認できるエリアです。</p>
         </div>
         <div class="steps">
-          <div class="step"><strong>1. 要件確認</strong>目的、ターゲット、CTA、素材を確認します。</div>
-          <div class="step"><strong>2. 構成整理</strong>掲載内容とセクションの順番を整えます。</div>
-          <div class="step"><strong>3. 制作</strong>デザイン、コーディング、スマホ対応を進めます。</div>
-          <div class="step"><strong>4. 確認・納品</strong>表示、リンク、文言を確認して納品します。</div>
+          <div class="step"><strong>Open</strong>8:00 - 18:00</div>
+          <div class="step"><strong>Closed</strong>Tuesday</div>
+          <div class="step"><strong>Station</strong>駅から徒歩6分</div>
+          <div class="step"><strong>SNS</strong>Instagramで新メニューを更新</div>
         </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <div class="notice">このページは自主制作サンプルです。店舗サイトの雰囲気作り、メニュー整理、アクセス導線の参考として作成しています。</div>
       </div>
     </section>
   </main>
-
-  <footer class="footer">
-    <div class="wrap">
-      <div>LP / Web Production Portfolio</div>
-      <div>自主制作サンプル</div>
-    </div>
-  </footer>
 </body>
 </html>
