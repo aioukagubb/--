@@ -3,63 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>損しない暮らしメモ</title>
+  <title>損しない暮らし診断</title>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --ink: #121926;
+      --bg: #f3f6fb;
+      --ink: #111827;
       --muted: #667085;
-      --line: #dfe6f0;
-      --navy: #111827;
+      --line: #dce4ef;
+      --navy: #101827;
       --red: #e5483f;
       --yellow: #f5c84b;
-      --cream: #fff8df;
+      --green: #19a974;
       --panel: #ffffff;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(245, 200, 75, .38), transparent 260px),
-        linear-gradient(180deg, #101827 0%, #172238 44%, var(--bg) 44%),
+        radial-gradient(circle at top right, rgba(245, 200, 75, .32), transparent 230px),
+        linear-gradient(180deg, #111827 0%, #172238 43%, var(--bg) 43%),
         var(--bg);
-      line-height: 1.7;
+      line-height: 1.65;
     }
     main {
       width: min(520px, 100%);
       margin: 0 auto;
-      padding: 20px 14px 40px;
+      padding: 18px 14px 40px;
     }
     .hero {
       color: #fff;
       text-align: center;
-      padding: 10px 2px 18px;
+      padding: 8px 2px 16px;
     }
     .avatar {
-      width: 88px;
-      height: 88px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid var(--yellow);
-      background: #101827;
+      background: var(--navy);
       box-shadow: 0 16px 32px rgba(0, 0, 0, .28);
     }
     .eyebrow {
       display: inline-flex;
-      margin-top: 13px;
+      margin-top: 12px;
       padding: 5px 12px;
       border-radius: 999px;
       background: var(--yellow);
-      color: #111827;
+      color: var(--navy);
       font-size: 12px;
       font-weight: 900;
     }
     h1 {
-      margin: 11px 0 8px;
-      font-size: clamp(31px, 8vw, 42px);
+      margin: 10px 0 8px;
+      font-size: clamp(32px, 8.5vw, 44px);
       line-height: 1.12;
       letter-spacing: 0;
     }
@@ -73,23 +72,23 @@
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: 17px;
       padding: 18px;
       margin-top: 14px;
       box-shadow: 0 10px 24px rgba(15, 23, 42, .08);
     }
-    .lead-card {
+    .lead {
       border: 2px solid var(--yellow);
       padding: 20px 18px;
     }
     .badge {
       display: inline-flex;
-      align-items: center;
       min-height: 28px;
+      align-items: center;
       padding: 4px 11px;
       border-radius: 999px;
       background: var(--yellow);
-      color: #111827;
+      color: var(--navy);
       font-size: 12px;
       font-weight: 900;
     }
@@ -101,7 +100,7 @@
     }
     h3 {
       margin: 0 0 8px;
-      font-size: 20px;
+      font-size: 19px;
       line-height: 1.35;
       letter-spacing: 0;
     }
@@ -111,103 +110,147 @@
       font-size: 14px;
       font-weight: 680;
     }
-    .button {
+    .start {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      width: 100%;
       margin-top: 16px;
       padding: 16px;
-      border-radius: 13px;
+      border: 0;
+      border-radius: 14px;
       background: var(--navy);
       color: #fff;
-      text-decoration: none;
-      font-weight: 900;
+      font: inherit;
       font-size: 17px;
+      font-weight: 900;
+      text-align: left;
     }
-    .button span:last-child {
+    .start span:last-child {
       color: var(--yellow);
       font-size: 22px;
       line-height: 1;
     }
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 15px;
+    .meter {
+      height: 9px;
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8eef7;
     }
-    .summary div {
-      min-height: 78px;
+    .bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--yellow), var(--red));
+      transition: width .22s ease;
+    }
+    .progress-text {
+      margin-top: 8px;
+      color: #98a2b3;
+      font-size: 12px;
+      font-weight: 800;
+      text-align: right;
+    }
+    .question {
+      display: none;
+    }
+    .question.is-active {
+      display: block;
+    }
+    .q-number {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .choices {
       display: grid;
-      align-content: center;
-      justify-items: center;
-      padding: 10px 6px;
+      gap: 9px;
+      margin-top: 16px;
+    }
+    .choice {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid var(--line);
       border-radius: 13px;
-      background: var(--cream);
-      border: 1px solid #f0d16c;
+      background: #fbfcff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      text-align: left;
+    }
+    .choice:active {
+      transform: translateY(1px);
+    }
+    .result {
+      display: none;
+    }
+    .result.is-active {
+      display: block;
+    }
+    .score {
+      display: grid;
+      place-items: center;
+      width: 148px;
+      height: 148px;
+      margin: 16px auto;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #fff 0 52%, transparent 53%),
+        conic-gradient(var(--red) calc(var(--score) * 1%), #e8eef7 0);
+    }
+    .score strong {
+      display: block;
+      color: var(--ink);
+      font-size: 38px;
+      line-height: 1;
       text-align: center;
+    }
+    .score small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
       font-size: 12px;
       font-weight: 900;
-      line-height: 1.35;
+      text-align: center;
     }
-    .summary strong {
-      display: block;
-      color: var(--red);
-      font-size: 22px;
-      line-height: 1;
-      margin-bottom: 6px;
+    .rank {
+      padding: 13px;
+      border-radius: 13px;
+      background: #fff7d6;
+      border: 1px solid #f0d16c;
+      color: #344054;
+      font-weight: 850;
+      text-align: center;
     }
-    .checklist {
+    .actions {
       display: grid;
       gap: 10px;
       margin-top: 14px;
     }
-    .item {
+    .action {
       padding: 14px;
       border: 1px solid var(--line);
       border-radius: 13px;
       background: #fbfcff;
     }
-    .item-title {
-      display: flex;
-      gap: 9px;
-      align-items: flex-start;
-      margin-bottom: 5px;
-      color: var(--ink);
-      font-size: 16px;
-      font-weight: 900;
-      line-height: 1.45;
-    }
-    .box {
-      flex: 0 0 auto;
-      width: 21px;
-      height: 21px;
-      margin-top: 1px;
-      border: 2px solid var(--red);
-      border-radius: 5px;
-      background: #fff;
-    }
-    .item p {
-      padding-left: 30px;
-      font-size: 13px;
-    }
-    .hint {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 13px;
-      background: #eef4ff;
-      border: 1px solid #c8d8ff;
-    }
-    .hint strong {
+    .action b {
       display: block;
       margin-bottom: 4px;
-      font-size: 15px;
+      font-size: 16px;
     }
-    .mini {
-      margin-top: 10px;
-      color: #8a94a6;
-      font-size: 12px;
-      font-weight: 700;
+    .again {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 900;
     }
     .notice {
       margin: 16px 0 0;
@@ -216,79 +259,226 @@
       font-size: 12px;
       font-weight: 700;
     }
-    @media (max-width: 360px) {
-      main { padding-inline: 10px; }
-      .summary { grid-template-columns: 1fr; }
-      h1 { font-size: 30px; }
-    }
   </style>
 </head>
 <body>
   <main>
     <section class="hero">
       <img class="avatar" src="https://cdn.jsdelivr.net/gh/aioukagubb/--@main/tiktok/assets/profile_icon_sonshinai_v1.png" alt="損しない暮らしメモ">
-      <div class="eyebrow">無料チェックリスト</div>
-      <h1>毎月の損を<br>3分で確認</h1>
-      <p>スマホ代、サブスク、固定費。まずは見落としやすいところだけまとめました。</p>
+      <div class="eyebrow">30秒で完了</div>
+      <h1>ムダ払い<br>危険度診断</h1>
+      <p>7つ答えるだけで、今どこから見直すべきかを出します。</p>
     </section>
 
-    <section class="card lead-card">
-      <div class="badge">まず見るところ</div>
-      <h2>知らないうちに払っているお金、ありませんか？</h2>
-      <p>細かい節約を頑張る前に、毎月勝手に出ていくお金を一度だけ確認します。</p>
-      <div class="summary">
-        <div><strong>1</strong>スマホ代</div>
-        <div><strong>2</strong>サブスク</div>
-        <div><strong>3</strong>固定費</div>
+    <section class="card lead" id="app">
+      <div id="intro">
+        <div class="badge">無料診断</div>
+        <h2>毎月、気づかないうちに払っているお金をチェック</h2>
+        <p>スマホ代、サブスク、固定費、制度の見落とし。答えに合わせて、優先順位を出します。</p>
+        <button class="start" type="button" id="start"><span>診断をはじめる</span><span>›</span></button>
       </div>
-      <a class="button" href="#checklist"><span>チェックリストを見る</span><span>›</span></a>
+
+      <div id="quiz" style="display:none">
+        <div class="meter"><div class="bar" id="bar"></div></div>
+        <div class="progress-text" id="progress">1 / 7</div>
+
+        <div class="question is-active" data-index="0">
+          <div class="q-number">Q1</div>
+          <h2>スマホの月額、すぐ言えますか？</h2>
+          <p>だいたいではなく、今月いくら払っているかです。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="phone">言える</button>
+            <button class="choice" data-points="12" data-tag="phone">だいたいしか分からない</button>
+            <button class="choice" data-points="18" data-tag="phone">分からない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="1">
+          <div class="q-number">Q2</div>
+          <h2>毎月のデータ使用量を見たことはありますか？</h2>
+          <p>使っていない容量に払っている可能性があります。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="phone">毎月見る</button>
+            <button class="choice" data-points="10" data-tag="phone">たまに見る</button>
+            <button class="choice" data-points="16" data-tag="phone">ほぼ見ない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="2">
+          <div class="q-number">Q3</div>
+          <h2>使っていないサブスク、ありそうですか？</h2>
+          <p>動画、音楽、アプリ、クラウド保存などです。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="subscription">ないと思う</button>
+            <button class="choice" data-points="13" data-tag="subscription">たぶんある</button>
+            <button class="choice" data-points="18" data-tag="subscription">把握していない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="3">
+          <div class="q-number">Q4</div>
+          <h2>クレカ明細を月1回見ていますか？</h2>
+          <p>小さい支払いほど、見落としやすいです。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="subscription">見ている</button>
+            <button class="choice" data-points="11" data-tag="subscription">たまに見る</button>
+            <button class="choice" data-points="17" data-tag="subscription">ほぼ見ない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="4">
+          <div class="q-number">Q5</div>
+          <h2>電気、Wi-Fi、保険を年額で見たことはありますか？</h2>
+          <p>月額だと小さく見えても、年額では大きくなります。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="fixed">ある</button>
+            <button class="choice" data-points="10" data-tag="fixed">一部だけある</button>
+            <button class="choice" data-points="16" data-tag="fixed">ない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="5">
+          <div class="q-number">Q6</div>
+          <h2>自治体の補助金や支援制度を調べたことはありますか？</h2>
+          <p>対象でも、自分で確認しないと気づかない制度があります。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="system">ある</button>
+            <button class="choice" data-points="9" data-tag="system">少しだけある</button>
+            <button class="choice" data-points="14" data-tag="system">ない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="6">
+          <div class="q-number">Q7</div>
+          <h2>家計の見直し、面倒で後回しにしがちですか？</h2>
+          <p>ここが一番大事です。続かない仕組みは意味がありません。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="habit">すぐやる方</button>
+            <button class="choice" data-points="10" data-tag="habit">後回しにしがち</button>
+            <button class="choice" data-points="15" data-tag="habit">かなり面倒</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result" id="result">
+        <div class="badge">診断結果</div>
+        <h2 id="resultTitle">ムダ払い危険度</h2>
+        <div class="score" id="scoreCircle" style="--score: 0">
+          <div><strong id="scoreValue">0</strong><small>点</small></div>
+        </div>
+        <div class="rank" id="rankText"></div>
+        <div class="actions" id="actions"></div>
+        <button class="again" type="button" id="again">もう一度診断する</button>
+      </div>
     </section>
 
-    <section id="checklist" class="card">
-      <div class="badge">保存用</div>
-      <h2>損しない暮らしチェックリスト</h2>
-      <p>全部やらなくて大丈夫です。上から順に、当てはまるところだけ確認してください。</p>
-
-      <div class="checklist">
-        <div class="item">
-          <div class="item-title"><span class="box"></span><span>スマホのデータ使用量を確認する</span></div>
-          <p>大容量プランなのに毎月あまり使っていないなら、見直し候補です。</p>
-        </div>
-
-        <div class="item">
-          <div class="item-title"><span class="box"></span><span>通話オプション・端末保証を見る</span></div>
-          <p>契約時につけたまま、使っていないオプションが残っていることがあります。</p>
-        </div>
-
-        <div class="item">
-          <div class="item-title"><span class="box"></span><span>クレカ明細の毎月同じ支払いを探す</span></div>
-          <p>動画、音楽、アプリ、クラウド保存など、小さい支払いほど見落としやすいです。</p>
-        </div>
-
-        <div class="item">
-          <div class="item-title"><span class="box"></span><span>1か月使っていないサービスを止める候補にする</span></div>
-          <p>いつか使うかも、で残っているものが毎月のムダになりやすいです。</p>
-        </div>
-
-        <div class="item">
-          <div class="item-title"><span class="box"></span><span>電気・ガス・Wi-Fi・保険を年額で見る</span></div>
-          <p>月額では小さく見えても、年間で見ると判断しやすくなります。</p>
-        </div>
-
-        <div class="item">
-          <div class="item-title"><span class="box"></span><span>自治体の制度を公式サイトで確認する</span></div>
-          <p>補助金や支援制度は地域や条件で変わります。最後は公式情報で確認してください。</p>
-        </div>
-      </div>
-
-      <div class="hint">
-        <strong>迷ったらここだけ</strong>
-        <p>スマホ代、使っていないサブスク、クレカ明細の毎月同じ支払い。この3つからで十分です。</p>
-      </div>
-      <p class="mini">このページは、あとで見返せるように保存しておくと便利です。</p>
-    </section>
-
-    <p class="notice">掲載内容は一般的な情報です。制度や契約条件は必ず公式情報をご確認ください。</p>
+    <p class="notice">診断結果は一般的な目安です。制度や契約条件は必ず公式情報をご確認ください。</p>
   </main>
+
+  <script>
+    const start = document.getElementById("start");
+    const intro = document.getElementById("intro");
+    const quiz = document.getElementById("quiz");
+    const result = document.getElementById("result");
+    const questions = [...document.querySelectorAll(".question")];
+    const choices = [...document.querySelectorAll(".choice")];
+    const bar = document.getElementById("bar");
+    const progress = document.getElementById("progress");
+    const scoreValue = document.getElementById("scoreValue");
+    const scoreCircle = document.getElementById("scoreCircle");
+    const rankText = document.getElementById("rankText");
+    const actions = document.getElementById("actions");
+    const again = document.getElementById("again");
+
+    let index = 0;
+    let total = 0;
+    let tags = {};
+
+    const advice = {
+      phone: {
+        title: "まずスマホ代を見る",
+        body: "月額、データ使用量、通話オプション、端末保証を確認。ここは毎月効きます。"
+      },
+      subscription: {
+        title: "クレカ明細でサブスクを探す",
+        body: "動画、音楽、アプリ、クラウド保存など、毎月同じ金額の支払いを見ます。"
+      },
+      fixed: {
+        title: "固定費を年額で見る",
+        body: "電気、Wi-Fi、保険、カード年会費は年額にすると判断しやすくなります。"
+      },
+      system: {
+        title: "住んでいる地域の制度を見る",
+        body: "地域名と補助金、助成金、子育て支援、医療費などで公式情報を確認します。"
+      },
+      habit: {
+        title: "一気にやらず、1日1項目にする",
+        body: "面倒なら全部やらなくて大丈夫。今日はスマホ代だけ、で十分です。"
+      }
+    };
+
+    function showQuestion(nextIndex) {
+      questions.forEach((q, i) => q.classList.toggle("is-active", i === nextIndex));
+      progress.textContent = `${nextIndex + 1} / ${questions.length}`;
+      bar.style.width = `${(nextIndex / questions.length) * 100}%`;
+    }
+
+    function showResult() {
+      const score = Math.min(100, total);
+      bar.style.width = "100%";
+      quiz.style.display = "none";
+      result.classList.add("is-active");
+      scoreValue.textContent = score;
+      scoreCircle.style.setProperty("--score", score);
+
+      if (score >= 75) {
+        rankText.textContent = "危険度高め。まずは毎月の支払いを1つずつ止血するところから。";
+      } else if (score >= 45) {
+        rankText.textContent = "見直し余地あり。スマホ代かサブスクのどちらかにムダが残っていそうです。";
+      } else {
+        rankText.textContent = "危険度は低め。ただし固定費と制度だけは定期的に確認しておくと安心です。";
+      }
+
+      const sorted = Object.entries(tags).sort((a, b) => b[1] - a[1]).slice(0, 3);
+      const picked = sorted.length ? sorted.map(([tag]) => tag) : ["phone", "subscription", "fixed"];
+      actions.innerHTML = picked.map(tag => `
+        <div class="action">
+          <b>${advice[tag].title}</b>
+          <p>${advice[tag].body}</p>
+        </div>
+      `).join("");
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    start.addEventListener("click", () => {
+      intro.style.display = "none";
+      quiz.style.display = "block";
+      showQuestion(0);
+    });
+
+    choices.forEach(button => {
+      button.addEventListener("click", () => {
+        const points = Number(button.dataset.points);
+        const tag = button.dataset.tag;
+        total += points;
+        tags[tag] = (tags[tag] || 0) + points;
+        index += 1;
+        if (index >= questions.length) {
+          showResult();
+        } else {
+          showQuestion(index);
+        }
+      });
+    });
+
+    again.addEventListener("click", () => {
+      index = 0;
+      total = 0;
+      tags = {};
+      result.classList.remove("is-active");
+      quiz.style.display = "block";
+      showQuestion(0);
+    });
+  </script>
 </body>
 </html>
