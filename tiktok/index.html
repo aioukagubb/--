@@ -298,9 +298,9 @@
   <main>
     <section class="hero">
       <img class="avatar" src="https://cdn.jsdelivr.net/gh/aioukagubb/--@main/tiktok/assets/profile_icon_sonshinai_v1.png" alt="損しない暮らしメモ">
-      <div class="eyebrow">心理テスト感覚で30秒</div>
+      <div class="eyebrow">心理テスト感覚で1分</div>
       <h1>あなたの<br>ムダ払いタイプ診断</h1>
-      <p>7つ答えるだけで、どこで損しやすいかと今日やる1手を出します。</p>
+      <p>12問で、どこで損しやすいかと今日やる1手を出します。</p>
     </section>
 
     <section class="card lead" id="app">
@@ -313,7 +313,7 @@
 
       <div id="quiz" style="display:none">
         <div class="meter"><div class="bar" id="bar"></div></div>
-        <div class="progress-text" id="progress">1 / 7</div>
+        <div class="progress-text" id="progress">1 / 12</div>
 
         <div class="question is-active" data-index="0">
           <div class="q-number">Q1</div>
@@ -383,6 +383,61 @@
 
         <div class="question" data-index="6">
           <div class="q-number">Q7</div>
+          <h2>保険や保証、内容まで説明できますか？</h2>
+          <p>安心料のつもりが、重複や放置になっていることがあります。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="fixed">説明できる</button>
+            <button class="choice" data-points="9" data-tag="fixed">なんとなく分かる</button>
+            <button class="choice" data-points="14" data-tag="fixed">正直分からない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="7">
+          <div class="q-number">Q8</div>
+          <h2>無料期間で登録したサービス、覚えていますか？</h2>
+          <p>無料のつもりが、いつの間にか月額になっているパターンです。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="subscription">覚えている</button>
+            <button class="choice" data-points="10" data-tag="subscription">少し怪しい</button>
+            <button class="choice" data-points="16" data-tag="subscription">ほぼ覚えていない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="8">
+          <div class="q-number">Q9</div>
+          <h2>ポイントやクーポンのために買いすぎることはありますか？</h2>
+          <p>得した気分でも、不要な出費なら逆効果です。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="shopping">ほぼない</button>
+            <button class="choice" data-points="8" data-tag="shopping">たまにある</button>
+            <button class="choice" data-points="13" data-tag="shopping">よくある</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="9">
+          <div class="q-number">Q10</div>
+          <h2>買う前に、1回だけ比較しますか？</h2>
+          <p>価格差よりも、比較せず決めるクセを見ます。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="shopping">だいたい比較する</button>
+            <button class="choice" data-points="8" data-tag="shopping">急いでいる時はしない</button>
+            <button class="choice" data-points="13" data-tag="shopping">ほぼ比較しない</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="10">
+          <div class="q-number">Q11</div>
+          <h2>支払い方法、なんとなく同じものを使い続けていますか？</h2>
+          <p>手数料や年会費、還元の取りこぼしが出ることがあります。</p>
+          <div class="choices">
+            <button class="choice" data-points="0" data-tag="payment">見直している</button>
+            <button class="choice" data-points="8" data-tag="payment">少し気になる</button>
+            <button class="choice" data-points="13" data-tag="payment">完全になんとなく</button>
+          </div>
+        </div>
+
+        <div class="question" data-index="11">
+          <div class="q-number">Q12</div>
           <h2>見直し系、結局あと回しになりますか？</h2>
           <p>性格の問題ではなく、やる順番が重いだけかもしれません。</p>
           <div class="choices">
@@ -464,6 +519,20 @@
         body: "全部やろうとすると止まります。最初はスマホ代かサブスクのどちらか1つだけ。",
         steps: ["見る項目を1つに決める", "5分だけ触る", "判断できないものはメモだけ残す"],
         outcome: "完璧にやるより、1つ終わる方が家計は前に進みます。"
+      },
+      shopping: {
+        type: "得したつもりで損するタイプ",
+        title: "今日やること：買う前ルールを1つ作る",
+        body: "ポイントやクーポンで買いすぎる人は、買う前に一度だけ本当に必要かを見る。",
+        steps: ["買う前に合計金額を見る", "今日必要かを確認する", "迷ったものは翌日に回す"],
+        outcome: "買わない得を作れると、節約している感覚なしで出費が減ります。"
+      },
+      payment: {
+        type: "支払い放置タイプ",
+        title: "今日やること：支払い方法を1つだけ確認",
+        body: "なんとなく使っているカードや決済に、年会費や手数料のムダが残っていないかを見る。",
+        steps: ["メインの支払い方法を1つ選ぶ", "年会費と手数料を見る", "使っていないカードを候補にする"],
+        outcome: "支払いの出口を整えると、明細も見やすくなってムダに気づきやすくなります。"
       }
     };
 
@@ -492,7 +561,7 @@
     }
 
     function showResult() {
-      const score = Math.min(100, total);
+      const score = Math.min(100, Math.round((total / 185) * 100));
       bar.style.width = "100%";
       quiz.style.display = "none";
       result.classList.add("is-active");
