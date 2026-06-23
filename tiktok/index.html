@@ -6,76 +6,85 @@
   <title>損しない暮らしメモ</title>
   <style>
     :root {
-      --bg: #0f1724;
-      --panel: #ffffff;
-      --ink: #17202a;
+      --bg: #f4f6f9;
+      --ink: #121926;
       --muted: #667085;
-      --line: #e1e6ef;
+      --line: #dde4ee;
+      --navy: #111827;
       --red: #e5483f;
       --yellow: #f5c84b;
-      --navy: #142033;
+      --blue: #2f6fed;
+      --panel: #ffffff;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(245, 200, 75, .18), transparent 30%),
-        linear-gradient(180deg, #101827 0%, #182238 45%, #f3f5f8 45%);
       color: var(--ink);
+      background:
+        linear-gradient(180deg, #101827 0%, #172238 34%, var(--bg) 34%),
+        var(--bg);
+      line-height: 1.7;
     }
     main {
       width: min(520px, 100%);
       margin: 0 auto;
-      padding: 28px 16px 40px;
+      padding: 22px 14px 42px;
     }
-    .profile {
-      text-align: center;
+    .hero {
       color: #fff;
-      padding: 8px 0 18px;
+      text-align: center;
+      padding: 14px 4px 18px;
     }
     .avatar {
-      width: 108px;
-      height: 108px;
+      width: 94px;
+      height: 94px;
       border-radius: 50%;
-      border: 4px solid var(--yellow);
-      background: #111827;
       object-fit: cover;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+      border: 4px solid var(--yellow);
+      background: #101827;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, .25);
+    }
+    .eyebrow {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: #111827;
+      font-size: 12px;
+      font-weight: 900;
     }
     h1 {
-      margin: 12px 0 6px;
-      font-size: 26px;
-      line-height: 1.2;
+      margin: 12px 0 8px;
+      font-size: clamp(30px, 8vw, 42px);
+      line-height: 1.15;
       letter-spacing: 0;
     }
-    .bio {
+    .hero p {
+      width: min(380px, 100%);
       margin: 0 auto;
-      max-width: 360px;
-      color: #d9e1ef;
+      color: #d9e2f1;
       font-size: 14px;
-      line-height: 1.65;
       font-weight: 700;
     }
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px;
-      margin-top: 12px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, .08);
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 14px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .08);
     }
     .lead-card {
       border: 2px solid var(--yellow);
-      position: relative;
-      overflow: hidden;
     }
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
+      min-height: 28px;
+      padding: 4px 11px;
       border-radius: 999px;
       background: var(--yellow);
       color: #111827;
@@ -83,160 +92,230 @@
       font-weight: 900;
     }
     h2 {
-      margin: 10px 0 6px;
-      font-size: 21px;
+      margin: 10px 0 8px;
+      font-size: 23px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
       line-height: 1.35;
       letter-spacing: 0;
     }
     p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.7;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 650;
+    }
+    .quick {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+    .quick a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fbfcff;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+    .quick small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .arrow {
+      color: var(--red);
+      font-size: 22px;
+      flex: 0 0 auto;
+    }
+    .check3 {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .check3 div {
+      padding: 12px;
+      border-radius: 12px;
+      background: #fff7d6;
+      border: 1px solid #f2d36b;
+      font-weight: 900;
+    }
+    .section-card {
+      scroll-margin-top: 18px;
+    }
+    .section-card strong {
+      color: var(--ink);
+    }
+    .todo {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 8px;
+    }
+    .todo li {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fbfcff;
+      color: #344054;
+      font-weight: 750;
+    }
+    .todo li::before {
+      content: "□";
+      margin-right: 8px;
+      color: var(--red);
+      font-weight: 900;
+    }
+    .note {
+      background: #eef4ff;
+      border-color: #c8d8ff;
+    }
+    .warning {
+      background: #fff7d6;
+      border-color: #f2d36b;
     }
     .button {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
       gap: 12px;
       margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 10px;
-      background: var(--red);
+      padding: 15px 16px;
+      border-radius: 12px;
+      background: var(--navy);
       color: #fff;
       text-decoration: none;
       font-weight: 900;
       font-size: 16px;
-      box-shadow: 0 8px 16px rgba(229, 72, 63, .22);
-    }
-    .button.secondary {
-      background: var(--navy);
-      box-shadow: none;
-    }
-    .button span:last-child {
-      flex: 0 0 auto;
-      font-size: 20px;
-    }
-    .link-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .link-item {
-      display: block;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--ink);
-      background: #fbfcfe;
-    }
-    .link-title {
-      display: block;
-      font-weight: 900;
-      font-size: 16px;
-      line-height: 1.35;
-    }
-    .link-desc {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-      font-weight: 650;
     }
     .notice {
-      color: #8590a3;
+      margin: 18px 0 0;
+      color: #8a94a6;
       text-align: center;
       font-size: 12px;
-      margin: 16px 0 0;
-      font-weight: 600;
-    }
-    @media (max-width: 360px) {
-      main { padding-left: 12px; padding-right: 12px; }
-      .avatar { width: 96px; height: 96px; }
-      h1 { font-size: 24px; }
-      h2 { font-size: 19px; }
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
   <main>
-    <section class="profile">
+    <section class="hero">
       <img class="avatar" src="https://cdn.jsdelivr.net/gh/aioukagubb/--@main/tiktok/assets/profile_icon_sonshinai_v1.png" alt="損しない暮らしメモ">
-      <h1>損しない暮らしメモ</h1>
-      <p class="bio">暮らしに関わる「知らないと損」を1分で。生活のムダ・危険・便利ワザをわかりやすく。</p>
+      <div class="eyebrow">1分で暮らし防衛</div>
+      <h1>知らないだけで<br>損してるかも</h1>
+      <p>暮らしに関わるムダ・危険・便利ワザを、あとで確認できる形でまとめています。</p>
     </section>
-
-    <section class="card lead-card">
-      <div class="badge">まずはこれ</div>
-      <h2>知らないと損する<br>生活防衛チェックリスト</h2>
-      <p>スマホ代、サブスク、固定費、制度、AI活用まで。今日すぐ確認できる項目だけまとめました。</p>
-      <a class="button" href="#checklist">
-        <span>無料チェックリストを見る</span>
-        <span>›</span>
-      </a>
-    </section>
-
-    <section class="card">
-      <div class="badge">テーマ別</div>
-      <h2>気になるところから確認</h2>
-      <div class="link-list">
-        <a class="link-item" href="#smartphone">
-          <span class="link-title">スマホ代チェック</span>
-          <span class="link-desc">プラン、データ量、不要オプションを確認。</span>
-        </a>
-        <a class="link-item" href="#subscription">
-          <span class="link-title">サブスク整理チェック</span>
-          <span class="link-desc">使っていない月額課金を見つける。</span>
-        </a>
-        <a class="link-item" href="#fixed-cost">
-          <span class="link-title">固定費チェック</span>
-          <span class="link-desc">電気代、Wi-Fi、保険などを見直す。</span>
-        </a>
-        <a class="link-item" href="#system">
-          <span class="link-title">申請制度チェック</span>
-          <span class="link-desc">公式サイトで確認すべき制度を整理。</span>
-        </a>
-      </div>
-    </section>
-
-
 
     <section id="checklist" class="card lead-card">
-      <div class="badge">保存版</div>
-      <h2>生活防衛チェックリスト</h2>
-      <p>まずはこの3つだけ確認してください。スマホ代、使っていないサブスク、クレカ明細の毎月同じ支払い。</p>
-      <div class="link-list">
-        <div id="smartphone" class="link-item">
-          <span class="link-title">スマホ代チェック</span>
-          <span class="link-desc">実際に使っているデータ量、通話オプション、端末保証、不要な有料オプションを確認。大容量プランなのに使用量が少ない人は見直し候補。</span>
-        </div>
-        <div id="subscription" class="link-item">
-          <span class="link-title">サブスク整理チェック</span>
-          <span class="link-desc">動画、音楽、アプリ課金、クラウド保存、無料期間後に継続されたサービスをクレカ明細から確認。1か月使っていないものは停止候補。</span>
-        </div>
-        <div id="fixed-cost" class="link-item">
-          <span class="link-title">固定費チェック</span>
-          <span class="link-desc">電気料金プラン、ガス、Wi-Fi、保険、クレジットカード年会費を確認。固定費は一度下げると毎月効果が続きます。</span>
-        </div>
-        <div id="system" class="link-item">
-          <span class="link-title">申請制度チェック</span>
-          <span class="link-desc">自治体の補助金、子育て支援、医療費控除、住居関連の制度を確認。制度は地域や条件で変わるので、必ず公式サイトで確認してください。</span>
-        </div>
+      <div class="badge">まずはここ</div>
+      <h2>あなたはどれが気になる？</h2>
+      <p>当てはまるものを押すと、このページ内のチェック項目へ移動します。</p>
+      <div class="quick">
+        <a href="#smartphone">
+          <span>スマホ代が高い気がする<small>データ量・不要オプションを確認</small></span>
+          <span class="arrow">›</span>
+        </a>
+        <a href="#subscription">
+          <span>サブスクを整理したい<small>毎月の小さい支払いを確認</small></span>
+          <span class="arrow">›</span>
+        </a>
+        <a href="#fixed-cost">
+          <span>固定費を下げたい<small>電気代・Wi-Fi・保険など</small></span>
+          <span class="arrow">›</span>
+        </a>
+        <a href="#system">
+          <span>使える制度を知りたい<small>補助金・支援制度の確認</small></span>
+          <span class="arrow">›</span>
+        </a>
+        <a href="#ai">
+          <span>調べものを楽にしたい<small>AIで比較・整理する</small></span>
+          <span class="arrow">›</span>
+        </a>
       </div>
     </section>
 
     <section class="card">
-      <div class="badge">次にやること</div>
-      <h2>まずは3つだけ確認</h2>
-      <p>スマホ代、使っていないサブスク、クレカ明細。この3つを見るだけでも、毎月のムダに気づける可能性があります。</p>
-      <a class="button secondary" href="#checklist">
-        <span>チェック項目をもう一度見る</span>
-        <span>›</span>
-      </a>
+      <div class="badge">最初の3つ</div>
+      <h2>迷ったらここだけ確認</h2>
+      <p>全部やらなくて大丈夫です。まずは毎月出ていくお金から見ます。</p>
+      <div class="check3">
+        <div>スマホ代</div>
+        <div>使っていないサブスク</div>
+        <div>クレカ明細の毎月同じ支払い</div>
+      </div>
+    </section>
+
+    <section id="smartphone" class="card section-card">
+      <div class="badge">スマホ代</div>
+      <h3>プラン名より、使用データ量を見る</h3>
+      <p>大容量プランなのに実際はあまり使っていない場合、毎月ムダが出ている可能性があります。</p>
+      <ul class="todo">
+        <li>毎月のデータ使用量を見る</li>
+        <li>通話オプションを確認する</li>
+        <li>端末保証や有料オプションを見る</li>
+      </ul>
+      <a class="button" href="#checklist"><span>項目一覧に戻る</span><span>›</span></a>
+    </section>
+
+    <section id="subscription" class="card section-card">
+      <div class="badge">サブスク</div>
+      <h3>アプリ一覧より、クレカ明細を見る</h3>
+      <p>無料期間のあとに継続されたサービスや、月300円・500円の小さい支払いは見落としやすいです。</p>
+      <ul class="todo">
+        <li>毎月同じ金額の支払いを探す</li>
+        <li>1か月使っていないサービスを見る</li>
+        <li>アプリ課金・クラウド保存も確認する</li>
+      </ul>
+      <a class="button" href="#checklist"><span>項目一覧に戻る</span><span>›</span></a>
+    </section>
+
+    <section id="fixed-cost" class="card section-card">
+      <div class="badge">固定費</div>
+      <h3>一度下げると、毎月効く</h3>
+      <p>固定費は小さく見えても、年間で見ると大きくなります。まず契約内容を確認します。</p>
+      <ul class="todo">
+        <li>電気料金プランを見る</li>
+        <li>Wi-Fiや保険の契約内容を見る</li>
+        <li>クレジットカード年会費を見る</li>
+      </ul>
+      <a class="button" href="#checklist"><span>項目一覧に戻る</span><span>›</span></a>
+    </section>
+
+    <section id="system" class="card section-card warning">
+      <div class="badge">制度</div>
+      <h3>対象でも、自動でもらえるとは限らない</h3>
+      <p>補助金や支援制度は、地域や条件で変わります。必ず住んでいる自治体の公式情報で確認してください。</p>
+      <ul class="todo">
+        <li>地域名＋補助金で検索する</li>
+        <li>地域名＋助成金で検索する</li>
+        <li>子育て・住まい・医療費も確認する</li>
+      </ul>
+      <a class="button" href="#checklist"><span>項目一覧に戻る</span><span>›</span></a>
+    </section>
+
+    <section id="ai" class="card section-card note">
+      <div class="badge">AI活用</div>
+      <h3>面倒な比較は、AIに整理させる</h3>
+      <p>契約内容や支出を見直すときは、AIに表で整理してもらうと確認しやすくなります。</p>
+      <ul class="todo">
+        <li>支出を項目別に整理する</li>
+        <li>見直す順番を出してもらう</li>
+        <li>比較表を作ってもらう</li>
+      </ul>
+      <a class="button" href="#checklist"><span>項目一覧に戻る</span><span>›</span></a>
     </section>
 
     <p class="notice">掲載内容は一般的な情報です。制度や契約条件は必ず公式情報をご確認ください。</p>
