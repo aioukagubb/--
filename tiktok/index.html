@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>損しない暮らしメモ</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #e1e6ef;
+      --red: #e5483f;
+      --yellow: #f5c84b;
+      --navy: #142033;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(245, 200, 75, .18), transparent 30%),
+        linear-gradient(180deg, #101827 0%, #182238 45%, #f3f5f8 45%);
+      color: var(--ink);
+    }
+    main {
+      width: min(520px, 100%);
+      margin: 0 auto;
+      padding: 28px 16px 40px;
+    }
+    .profile {
+      text-align: center;
+      color: #fff;
+      padding: 8px 0 18px;
+    }
+    .avatar {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      border: 4px solid var(--yellow);
+      background: #111827;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+    }
+    h1 {
+      margin: 12px 0 6px;
+      font-size: 26px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .bio {
+      margin: 0 auto;
+      max-width: 360px;
+      color: #d9e1ef;
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 700;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 12px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, .08);
+    }
+    .lead-card {
+      border: 2px solid var(--yellow);
+      position: relative;
+      overflow: hidden;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: #111827;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    h2 {
+      margin: 10px 0 6px;
+      font-size: 21px;
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 16px;
+      box-shadow: 0 8px 16px rgba(229, 72, 63, .22);
+    }
+    .button.secondary {
+      background: var(--navy);
+      box-shadow: none;
+    }
+    .button span:last-child {
+      flex: 0 0 auto;
+      font-size: 20px;
+    }
+    .link-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .link-item {
+      display: block;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      background: #fbfcfe;
+    }
+    .link-title {
+      display: block;
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+    .link-desc {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+    .notice {
+      color: #8590a3;
+      text-align: center;
+      font-size: 12px;
+      margin: 16px 0 0;
+      font-weight: 600;
+    }
+    @media (max-width: 360px) {
+      main { padding-left: 12px; padding-right: 12px; }
+      .avatar { width: 96px; height: 96px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="profile">
+      <img class="avatar" src="assets/profile_icon_sonshinai_v1.png" alt="損しない暮らしメモ">
+      <h1>損しない暮らしメモ</h1>
+      <p class="bio">暮らしに関わる「知らないと損」を1分で。生活のムダ・危険・便利ワザをわかりやすく。</p>
+    </section>
+
+    <section class="card lead-card">
+      <div class="badge">まずはこれ</div>
+      <h2>知らないと損する<br>生活防衛チェックリスト</h2>
+      <p>スマホ代、サブスク、固定費、制度、AI活用まで。今日すぐ確認できる項目だけまとめました。</p>
+      <a class="button" href="lead_magnet/life_defense_checklist.html">
+        <span>無料チェックリストを見る</span>
+        <span>›</span>
+      </a>
+    </section>
+
+    <section class="card">
+      <div class="badge">テーマ別</div>
+      <h2>気になるところから確認</h2>
+      <div class="link-list">
+        <a class="link-item" href="lead_magnet/life_defense_checklist.html#smartphone">
+          <span class="link-title">スマホ代チェック</span>
+          <span class="link-desc">プラン、データ量、不要オプションを確認。</span>
+        </a>
+        <a class="link-item" href="lead_magnet/life_defense_checklist.html#subscription">
+          <span class="link-title">サブスク整理チェック</span>
+          <span class="link-desc">使っていない月額課金を見つける。</span>
+        </a>
+        <a class="link-item" href="lead_magnet/life_defense_checklist.html#fixed-cost">
+          <span class="link-title">固定費チェック</span>
+          <span class="link-desc">電気代、Wi-Fi、保険などを見直す。</span>
+        </a>
+        <a class="link-item" href="lead_magnet/life_defense_checklist.html#system">
+          <span class="link-title">申請制度チェック</span>
+          <span class="link-desc">公式サイトで確認すべき制度を整理。</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="badge">準備中</div>
+      <h2>おすすめ見直し先</h2>
+      <p>アフィリエイト案件は、内容と条件を確認してから追加します。今は怪しく見せず、無料チェックリストを入口にします。</p>
+      <a class="button secondary" href="lead_magnet/life_defense_checklist.html">
+        <span>チェックリストに戻る</span>
+        <span>›</span>
+      </a>
+    </section>
+
+    <p class="notice">掲載内容は一般的な情報です。制度や契約条件は必ず公式情報をご確認ください。</p>
+  </main>
+</body>
+</html>
