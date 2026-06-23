@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>損しない暮らし診断</title>
+  <title>ムダ払いタイプ診断</title>
   <style>
     :root {
       --bg: #f3f6fb;
@@ -225,6 +225,19 @@
       font-weight: 850;
       text-align: center;
     }
+    .impact {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 13px;
+      background: #fff1ef;
+      border: 1px solid #ffc4bd;
+    }
+    .impact strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #b42318;
+      font-size: 15px;
+    }
     .actions {
       display: grid;
       gap: 10px;
@@ -240,6 +253,26 @@
       display: block;
       margin-bottom: 4px;
       font-size: 16px;
+    }
+    .steps {
+      margin: 8px 0 0;
+      padding-left: 19px;
+      color: #344054;
+      font-size: 14px;
+      font-weight: 760;
+    }
+    .steps li + li {
+      margin-top: 5px;
+    }
+    .outcome {
+      margin-top: 10px;
+      padding: 11px;
+      border-radius: 11px;
+      background: #ecfdf3;
+      border: 1px solid #abefc6;
+      color: #067647;
+      font-size: 13px;
+      font-weight: 850;
     }
     .again {
       width: 100%;
@@ -265,16 +298,16 @@
   <main>
     <section class="hero">
       <img class="avatar" src="https://cdn.jsdelivr.net/gh/aioukagubb/--@main/tiktok/assets/profile_icon_sonshinai_v1.png" alt="損しない暮らしメモ">
-      <div class="eyebrow">30秒で完了</div>
-      <h1>ムダ払い<br>危険度診断</h1>
-      <p>7つ答えるだけで、今どこから見直すべきかを出します。</p>
+      <div class="eyebrow">心理テスト感覚で30秒</div>
+      <h1>あなたの<br>ムダ払いタイプ診断</h1>
+      <p>7つ答えるだけで、どこで損しやすいかと今日やる1手を出します。</p>
     </section>
 
     <section class="card lead" id="app">
       <div id="intro">
         <div class="badge">無料診断</div>
-        <h2>毎月、気づかないうちに払っているお金をチェック</h2>
-        <p>スマホ代、サブスク、固定費、制度の見落とし。答えに合わせて、優先順位を出します。</p>
+        <h2>あなたは、どこでお金が漏れやすいタイプ？</h2>
+        <p>結果では「危険度」だけでなく、今日やることまで出します。読むだけで終わらせません。</p>
         <button class="start" type="button" id="start"><span>診断をはじめる</span><span>›</span></button>
       </div>
 
@@ -284,52 +317,52 @@
 
         <div class="question is-active" data-index="0">
           <div class="q-number">Q1</div>
-          <h2>スマホの月額、すぐ言えますか？</h2>
-          <p>だいたいではなく、今月いくら払っているかです。</p>
+          <h2>スマホ代を見たとき、どう感じますか？</h2>
+          <p>金額そのものより、把握できているかを見ます。</p>
           <div class="choices">
-            <button class="choice" data-points="0" data-tag="phone">言える</button>
-            <button class="choice" data-points="12" data-tag="phone">だいたいしか分からない</button>
-            <button class="choice" data-points="18" data-tag="phone">分からない</button>
+            <button class="choice" data-points="0" data-tag="phone">だいたい把握している</button>
+            <button class="choice" data-points="12" data-tag="phone">高い気はするけど放置</button>
+            <button class="choice" data-points="18" data-tag="phone">見てもよく分からない</button>
           </div>
         </div>
 
         <div class="question" data-index="1">
           <div class="q-number">Q2</div>
-          <h2>毎月のデータ使用量を見たことはありますか？</h2>
-          <p>使っていない容量に払っている可能性があります。</p>
+          <h2>契約プラン、今の使い方に合っていると思いますか？</h2>
+          <p>使っていない容量やオプションに払っている可能性があります。</p>
           <div class="choices">
-            <button class="choice" data-points="0" data-tag="phone">毎月見る</button>
-            <button class="choice" data-points="10" data-tag="phone">たまに見る</button>
-            <button class="choice" data-points="16" data-tag="phone">ほぼ見ない</button>
+            <button class="choice" data-points="0" data-tag="phone">合っていると思う</button>
+            <button class="choice" data-points="10" data-tag="phone">正直あやしい</button>
+            <button class="choice" data-points="16" data-tag="phone">何年も見直していない</button>
           </div>
         </div>
 
         <div class="question" data-index="2">
           <div class="q-number">Q3</div>
-          <h2>使っていないサブスク、ありそうですか？</h2>
-          <p>動画、音楽、アプリ、クラウド保存などです。</p>
+          <h2>「これ何の支払い？」と思う月額課金、ありますか？</h2>
+          <p>小さい支払いほど、記憶から消えます。</p>
           <div class="choices">
-            <button class="choice" data-points="0" data-tag="subscription">ないと思う</button>
+            <button class="choice" data-points="0" data-tag="subscription">ほぼない</button>
             <button class="choice" data-points="13" data-tag="subscription">たぶんある</button>
-            <button class="choice" data-points="18" data-tag="subscription">把握していない</button>
+            <button class="choice" data-points="18" data-tag="subscription">見るのが怖い</button>
           </div>
         </div>
 
         <div class="question" data-index="3">
           <div class="q-number">Q4</div>
-          <h2>クレカ明細を月1回見ていますか？</h2>
-          <p>小さい支払いほど、見落としやすいです。</p>
+          <h2>クレカ明細、最後まで見ますか？</h2>
+          <p>合計金額だけ見て終わると、漏れに気づきにくいです。</p>
           <div class="choices">
-            <button class="choice" data-points="0" data-tag="subscription">見ている</button>
-            <button class="choice" data-points="11" data-tag="subscription">たまに見る</button>
-            <button class="choice" data-points="17" data-tag="subscription">ほぼ見ない</button>
+            <button class="choice" data-points="0" data-tag="subscription">最後まで見る</button>
+            <button class="choice" data-points="11" data-tag="subscription">大きい金額だけ見る</button>
+            <button class="choice" data-points="17" data-tag="subscription">合計だけ見て閉じる</button>
           </div>
         </div>
 
         <div class="question" data-index="4">
           <div class="q-number">Q5</div>
-          <h2>電気、Wi-Fi、保険を年額で見たことはありますか？</h2>
-          <p>月額だと小さく見えても、年額では大きくなります。</p>
+          <h2>固定費を「年額」で見たことはありますか？</h2>
+          <p>月額のままだと、痛みが小さく見えます。</p>
           <div class="choices">
             <button class="choice" data-points="0" data-tag="fixed">ある</button>
             <button class="choice" data-points="10" data-tag="fixed">一部だけある</button>
@@ -339,23 +372,23 @@
 
         <div class="question" data-index="5">
           <div class="q-number">Q6</div>
-          <h2>自治体の補助金や支援制度を調べたことはありますか？</h2>
-          <p>対象でも、自分で確認しないと気づかない制度があります。</p>
+          <h2>使える制度を、見逃していそうですか？</h2>
+          <p>対象でも、自分で確認しないと気づかないものがあります。</p>
           <div class="choices">
-            <button class="choice" data-points="0" data-tag="system">ある</button>
-            <button class="choice" data-points="9" data-tag="system">少しだけある</button>
-            <button class="choice" data-points="14" data-tag="system">ない</button>
+            <button class="choice" data-points="0" data-tag="system">わりと調べる</button>
+            <button class="choice" data-points="9" data-tag="system">必要な時だけ調べる</button>
+            <button class="choice" data-points="14" data-tag="system">ほぼ調べない</button>
           </div>
         </div>
 
         <div class="question" data-index="6">
           <div class="q-number">Q7</div>
-          <h2>家計の見直し、面倒で後回しにしがちですか？</h2>
-          <p>ここが一番大事です。続かない仕組みは意味がありません。</p>
+          <h2>見直し系、結局あと回しになりますか？</h2>
+          <p>性格の問題ではなく、やる順番が重いだけかもしれません。</p>
           <div class="choices">
             <button class="choice" data-points="0" data-tag="habit">すぐやる方</button>
             <button class="choice" data-points="10" data-tag="habit">後回しにしがち</button>
-            <button class="choice" data-points="15" data-tag="habit">かなり面倒</button>
+            <button class="choice" data-points="15" data-tag="habit">考えただけで面倒</button>
           </div>
         </div>
       </div>
@@ -364,9 +397,10 @@
         <div class="badge">診断結果</div>
         <h2 id="resultTitle">ムダ払い危険度</h2>
         <div class="score" id="scoreCircle" style="--score: 0">
-          <div><strong id="scoreValue">0</strong><small>点</small></div>
+          <div><strong id="scoreValue">0</strong><small>危険度</small></div>
         </div>
         <div class="rank" id="rankText"></div>
+        <div class="impact" id="impactBox"></div>
         <div class="actions" id="actions"></div>
         <button class="again" type="button" id="again">もう一度診断する</button>
       </div>
@@ -387,6 +421,7 @@
     const scoreValue = document.getElementById("scoreValue");
     const scoreCircle = document.getElementById("scoreCircle");
     const rankText = document.getElementById("rankText");
+    const impactBox = document.getElementById("impactBox");
     const actions = document.getElementById("actions");
     const again = document.getElementById("again");
 
@@ -396,24 +431,57 @@
 
     const advice = {
       phone: {
-        title: "まずスマホ代を見る",
-        body: "月額、データ使用量、通話オプション、端末保証を確認。ここは毎月効きます。"
+        type: "スマホ代だだ漏れタイプ",
+        title: "今日やること：スマホ代だけ見る",
+        body: "プラン名、月額、データ使用量、通話オプション、端末保証を見る。",
+        steps: ["今月のスマホ料金を開く", "データ使用量を見る", "使っていないオプションを1つ探す"],
+        outcome: "ここを1つ外せるだけで、来月から毎月の固定費が軽くなります。"
       },
       subscription: {
-        title: "クレカ明細でサブスクを探す",
-        body: "動画、音楽、アプリ、クラウド保存など、毎月同じ金額の支払いを見ます。"
+        type: "サブスク記憶喪失タイプ",
+        title: "今日やること：毎月同じ支払いを探す",
+        body: "動画、音楽、アプリ、クラウド保存など、覚えていない月額課金を見つける。",
+        steps: ["クレカ明細を開く", "毎月同じ金額を探す", "1か月使っていないものを停止候補にする"],
+        outcome: "小さい支払いを止めるほど、何も我慢せずに手残りが増えます。"
       },
       fixed: {
-        title: "固定費を年額で見る",
-        body: "電気、Wi-Fi、保険、カード年会費は年額にすると判断しやすくなります。"
+        type: "固定費じわじわ削られタイプ",
+        title: "今日やること：固定費を年額にする",
+        body: "電気、Wi-Fi、保険、カード年会費を月額ではなく年額で見る。",
+        steps: ["月額を書き出す", "12倍して年額にする", "一番高いものから見直す"],
+        outcome: "年額にすると、本当に放置していい支払いか判断しやすくなります。"
       },
       system: {
-        title: "住んでいる地域の制度を見る",
-        body: "地域名と補助金、助成金、子育て支援、医療費などで公式情報を確認します。"
+        type: "制度見逃しタイプ",
+        title: "今日やること：地域名で制度を調べる",
+        body: "補助金、助成金、子育て支援、医療費など、対象でも気づいていない制度を確認する。",
+        steps: ["地域名と補助金で検索", "地域名と助成金で検索", "公式サイトだけを確認する"],
+        outcome: "知らないだけで使っていない制度に気づける可能性があります。"
       },
       habit: {
-        title: "一気にやらず、1日1項目にする",
-        body: "面倒なら全部やらなくて大丈夫。今日はスマホ代だけ、で十分です。"
+        type: "あとでやる詐欺タイプ",
+        title: "今日やること：1項目だけで終わる",
+        body: "全部やろうとすると止まります。最初はスマホ代かサブスクのどちらか1つだけ。",
+        steps: ["見る項目を1つに決める", "5分だけ触る", "判断できないものはメモだけ残す"],
+        outcome: "完璧にやるより、1つ終わる方が家計は前に進みます。"
+      }
+    };
+
+    const profiles = {
+      high: {
+        label: "今すぐ止血タイプ",
+        text: "このままだと、使っていない支払いに気づかないまま毎月削られます。",
+        impact: "一番怖いのは、贅沢していないのにお金が残らない感覚です。原因が分からないまま我慢だけ増えると、見直しがどんどん面倒になります。"
+      },
+      middle: {
+        label: "見直せば軽くなるタイプ",
+        text: "大きな浪費ではなく、小さい支払いが積み上がっている可能性があります。",
+        impact: "生活を削らなくても、払わなくていいものを外すだけで気持ちが軽くなります。まずは1つ見つければ十分です。"
+      },
+      low: {
+        label: "管理できてるけど油断タイプ",
+        text: "今は危険度低め。ただし契約や制度は変わるので、月1回だけ確認すると安心です。",
+        impact: "今できている人ほど、放置が長くなるとズレに気づきにくいです。定期チェックだけ残しておきましょう。"
       }
     };
 
@@ -431,20 +499,22 @@
       scoreValue.textContent = score;
       scoreCircle.style.setProperty("--score", score);
 
-      if (score >= 75) {
-        rankText.textContent = "危険度高め。まずは毎月の支払いを1つずつ止血するところから。";
-      } else if (score >= 45) {
-        rankText.textContent = "見直し余地あり。スマホ代かサブスクのどちらかにムダが残っていそうです。";
-      } else {
-        rankText.textContent = "危険度は低め。ただし固定費と制度だけは定期的に確認しておくと安心です。";
-      }
-
       const sorted = Object.entries(tags).sort((a, b) => b[1] - a[1]).slice(0, 3);
       const picked = sorted.length ? sorted.map(([tag]) => tag) : ["phone", "subscription", "fixed"];
-      actions.innerHTML = picked.map(tag => `
+      const mainTag = picked[0];
+      const profile = score >= 75 ? profiles.high : score >= 45 ? profiles.middle : profiles.low;
+      document.getElementById("resultTitle").textContent = `あなたは「${advice[mainTag].type}」`;
+      rankText.textContent = `${profile.label}。${profile.text}`;
+      impactBox.innerHTML = `<strong>このままだと</strong><p>${profile.impact}</p>`;
+
+      actions.innerHTML = picked.map((tag, i) => `
         <div class="action">
-          <b>${advice[tag].title}</b>
+          <b>${i + 1}. ${advice[tag].title}</b>
           <p>${advice[tag].body}</p>
+          <ol class="steps">
+            ${advice[tag].steps.map(step => `<li>${step}</li>`).join("")}
+          </ol>
+          <div class="outcome">${advice[tag].outcome}</div>
         </div>
       `).join("");
       result.scrollIntoView({ behavior: "smooth", block: "start" });
